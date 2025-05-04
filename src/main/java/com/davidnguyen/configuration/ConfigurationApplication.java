@@ -8,15 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(ConfigProperties.class)
+@EnableConfigurationProperties(DatabaseConfigProperties.class)
 public class ConfigurationApplication implements CommandLineRunner {
-	private final ConfigProperties configProperties;
-
-	public ConfigurationApplication(ConfigProperties configProperties) {
-		this.configProperties = configProperties;
-	}
-
 	private static final Logger log = LoggerFactory.getLogger(ConfigurationApplication.class);
+	private final DatabaseConfigProperties databaseConfigProperties;
+
+	public ConfigurationApplication(DatabaseConfigProperties databaseConfigProperties) {
+		this.databaseConfigProperties = databaseConfigProperties;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ConfigurationApplication.class, args);
@@ -24,9 +23,9 @@ public class ConfigurationApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("---------properties---------");
-		log.info("URL {}", configProperties.getUrl());
-		log.info("USERNAME {}", configProperties.getUsername());
-		log.info("PASSWORD {}", configProperties.getPassword());
+		log.info("---------Database Configuration---------");
+		log.info("URL: {}", databaseConfigProperties.getUrl());
+		log.info("Username: {}", databaseConfigProperties.getUsername());
+		log.info("Password: {}", databaseConfigProperties.getPassword() != null ? "*****" : "null");
 	}
 }

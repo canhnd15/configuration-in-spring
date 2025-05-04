@@ -1,14 +1,13 @@
 package com.davidnguyen.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties("spring.datasource")
-public class ConfigProperties {
+@ConfigurationProperties("database")
+public class DatabaseConfigProperties {
     private String url;
     private String username;
     private String password;
+    private String driver;
 
     public String getUrl() {
         return url;
@@ -33,4 +32,12 @@ public class ConfigProperties {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+} 
