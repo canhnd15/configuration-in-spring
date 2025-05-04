@@ -27,5 +27,6 @@ public class ConfigurationApplication implements CommandLineRunner {
 		log.info("URL: {}", databaseConfigProperties.getUrl());
 		log.info("Username: {}", databaseConfigProperties.getUsername());
 		log.info("Password: {}", databaseConfigProperties.getPassword() != null ? "*****" : "null");
+		log.info("Driver: {}", databaseConfigProperties.getDriver());
 	}
 }
